@@ -11,14 +11,20 @@ pool:
   vmImage: Agent-0777
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
 - task: Docker@2
+  displayName: 'Building a docker image'
   inputs:
     command: 'build'
     Dockerfile: '**/Dockerfile'
+- task: ECRPushImage@1
+  displayName: 'Pushing image into ECR repo'
+  inputs:
+    awsCredentials: 'AWS_Service'
+    regionName: 'ap-south-1'
+    imageSource: 'imagename'
+    sourceImageName: $(AWS_ECR_IMAGE_URL)
+    sourceImageTag: $(Build.BuildId)
+    pushTag: $(Build.BuildId)
+    repositoryName: $(AWS_REPOISTORY_NAME)
+    
+
