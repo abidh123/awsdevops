@@ -20,6 +20,7 @@ steps:
     command: 'build'
     Dockerfile: '**/Dockerfile'
     repository: '$(AWS_ECR_IMAGE_URL)'
+    tags: '$(Build.BuildId)'
 
 - task: ECRPushImage@1
   inputs:
