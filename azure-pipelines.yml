@@ -19,15 +19,19 @@ steps:
   inputs:
     command: 'build'
     Dockerfile: '**/Dockerfile'
+    repository: '$(AWS_ECR_IMAGE_URL)'
+
 - task: ECRPushImage@1
-  displayName: 'Pushing image into ECR repo'
   inputs:
     awsCredentials: 'AWS_Service'
     regionName: 'ap-south-1'
     imageSource: 'imagename'
-    sourceImageName: $(AWS_ECR_IMAGE_URL)
-    sourceImageTag: $(Build.BuildId)
-    pushTag: $(Build.BuildId)
-    repositoryName: $(AWS_REPOISTORY_NAME)
+    sourceImageName: '$(AWS_ECR_IMAGE_URL)'
+    sourceImageTag: '$(Build.BuildId)'
+    pushTag: latest
+    repositoryName: '$(AWS_ECR_IMAGE_URL)'
+    
+     
+
     
 
