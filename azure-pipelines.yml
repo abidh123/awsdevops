@@ -29,12 +29,12 @@ steps:
     tags: '$(Build.BuildId)'
 
 - task: Docker@2
-  displayName: 'pushing image'
+  displayName: 'pushing a ecr image'
   inputs:
+    command: 'push'
     repository: '$(AWS_ECR_IMAGE_URL)'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    tags: '$(Build.BuildId)'
+    tags: latest
+
 
 
     
