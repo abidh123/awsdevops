@@ -15,7 +15,7 @@ variables:
 
 steps:
 - script: |
-    aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com
+    aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin public.ecr.aws/o9n1v9f0
   displayName: 'Login to AWS'
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
@@ -31,7 +31,7 @@ steps:
 - task: ECRPushImage@1
   inputs:
     awsCredentials: 'AWS_Service'
-    regionName: 'ap-south-1'
+    regionName: 'us-east-1'
     imageSource: 'imagename'
     sourceImageName: '$(AWS_ECR_IMAGE_URL)'
     sourceImageTag: '$(Build.BuildId)'
