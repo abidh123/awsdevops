@@ -28,15 +28,13 @@ steps:
     repository: '$(AWS_ECR_IMAGE_URL)'
     tags: '$(Build.BuildId)'
 
-- task: ECRPushImage@1
+- task: Docker@2
+  displayName: 'pushing image'
   inputs:
-    awsCredentials: 'AWS_Service'
-    regionName: 'us-east-1'
-    imageSource: 'imagename'
-    sourceImageName: '$(AWS_ECR_IMAGE_URL)'
-    sourceImageTag: '$(Build.BuildId)'
-    pushTag: latest
-    repositoryName: '$(AWS_ECR_IMAGE_URL)'
+    repository: '$(AWS_ECR_IMAGE_URL)'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: '$(Build.BuildId)'
 
 
     
