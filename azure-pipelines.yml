@@ -15,7 +15,7 @@ variables:
 
 steps:
 - script: |
-    aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin public.ecr.aws/o9n1v9f0
+    aws ecr-public get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin public.ecr.aws/o9n1v9f0
   displayName: 'Login to AWS'
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
