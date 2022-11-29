@@ -7,43 +7,28 @@ trigger:
 - feature
 
 pool:
-  name: Salman-PC
-  vmImage: Agent-0888
+  name: salman-terraform
+  vmImage: Agent-0777
 
 variables:
 - group: AWS_ECR
 
-steps:
-- script: |
-    aws ecr-public get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin public.ecr.aws/h8p0y3j3
-  displayName: 'Login to AWS'
-  env:
-    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-- task: Docker@2
-  displayName: 'Building a docker image'
-  inputs:
-    command: 'build'
-    Dockerfile: '**/Dockerfile'
-    repository: '$(AWS_ECR_IMAGE_URL)'
-    tags: '$(Build.BuildId)'
-
-- task: Docker@2
-  displayName: 'pushing a ecr image'
-  inputs:
-    command: 'push'
-    repository: '$(AWS_ECR_IMAGE_URL)'
-    tags: '$(Build.BuildId)'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: 'kuberenetes/azureeksdeployment.yml'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+stages:
+  - stage: 
+    jobs:
+      - job: 
+        steps:
+        - task: Docker@2
+          inputs:
+            containerRegistry: 'Docker_Custom'
+            command: 'login'
+        - script: |
+            echo "hello world"
+            sh "docker build -t httpd-image ."
+          displayName:   building image                
+            
+       
+    
     
 
 
