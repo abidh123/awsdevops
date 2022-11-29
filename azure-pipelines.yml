@@ -13,8 +13,8 @@ pool:
 variables:
 - group: AWS_ECR
 
-stages:
-  - stage: 
+stages: 
+  - stage: creating docker image
     jobs:
       - job: 
         steps:
@@ -22,10 +22,13 @@ stages:
           inputs:
             containerRegistry: 'Docker_Custom'
             command: 'login'
-        - script: |
-            echo "hello world"
-            sh "docker build -t httpd-image ."
-          displayName:   building image                
+        - task: Docker@2
+          displayName: Building docker image
+          inputs:
+            containerRegistry: 'Docker_Custom'
+            repository: 'httpd-image'
+            command: 'build'
+            Dockerfile: '**/Dockerfile'
             
        
     
