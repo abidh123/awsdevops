@@ -14,7 +14,7 @@ variables:
 - group: AWS_ECR
 
 stages: 
-  - stage: creating docker image
+  - stage: creatingdockerimage
     jobs:
       - job: 
         steps:
