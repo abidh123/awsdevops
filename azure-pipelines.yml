@@ -28,13 +28,13 @@ stages:
             command: 'build'
             Dockerfile: '**/Dockerfile'
             tags: $(Build.BuildId)
-        - task: Docker@2
-          inputs:
-            containerRegistry: 'Docker_Custom'
-            repository: 'httpd-image'
-            command: 'push'
-            tags: $(Build.BuildId)
-        
+  - stage: pushing demo
+    jobs:
+      - job:  
+        steps:
+          - script: 
+              echo "hello world"   
+          
             
        
     
