@@ -29,6 +29,7 @@ stages:
             repository: 'httpd-image'
             command: 'build'
             Dockerfile: '**/Dockerfile'
+            tags: $(Build.BuildId)
             
        
     
