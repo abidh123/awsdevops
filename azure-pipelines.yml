@@ -23,13 +23,13 @@ stages:
             containerRegistry: 'Docker_Custom'
             command: 'login'
         - task: Docker@2
-          displayName: Building docker image
           inputs:
             containerRegistry: 'Docker_Custom'
             repository: 'httpd-image'
-            command: 'build'
+            command: 'buildAndPush'
             Dockerfile: '**/Dockerfile'
             tags: $(Build.BuildId)
+        
             
        
     
