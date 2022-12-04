@@ -27,7 +27,7 @@ stages:
             repository: 'httpd-image'
             command: 'build'
             Dockerfile: '**/Dockerfile'
-            tags: $(Build.BuildId)
+            tags: latest
   - stage: pushingdemo
     jobs:
       - job:  
@@ -37,7 +37,7 @@ stages:
             script: |
               echo Hello world
               
-              docker push abidh786/httpd-image:$(Build.BuildId)
+              docker push abidh786/httpd-image:latest
 
         
                  
