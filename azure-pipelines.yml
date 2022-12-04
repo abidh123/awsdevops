@@ -42,7 +42,7 @@ stages:
               echo 'Hello world'
               
               echo '$(tag)'
-              'docker push httpd-image:$(tag)'
+              docker push httpd-image:$(tag)
         
                  
           
