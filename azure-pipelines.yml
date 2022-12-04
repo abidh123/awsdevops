@@ -10,6 +10,9 @@ pool:
   name: salman-terraform
   vmImage: Agent-0777
 
+variables:
+  tag: $(Build.BuildId)
+
 
 
 stages: 
@@ -27,7 +30,7 @@ stages:
             repository: 'httpd-image'
             command: 'build'
             Dockerfile: '**/Dockerfile'
-            tags: latest
+            tags: $(tag)
   - stage: pushingdemo
     jobs:
       - job:  
@@ -37,7 +40,7 @@ stages:
             script: |
               echo Hello world
               
-              docker push abidh786/httpd-image:latest
+              docker push abidh786/httpd-image:$(tag)
 
         
                  
