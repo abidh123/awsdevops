@@ -24,13 +24,17 @@ stages:
           inputs:
             containerRegistry: 'Docker_Custom'
             command: 'login'
-        - task: Docker@2
+        - task: Bash@3
           inputs:
-            containerRegistry: 'Docker_Custom'
-            repository: 'httpd-image'
-            command: 'build'
-            Dockerfile: '**/Dockerfile'
-            tags: $(tag)
+            targetType: 'inline'
+            script: |
+              docker build -t newimage123:latest
+              
+              docker build -t newimage123:$(tag)
+              
+              docker tag newimage123:latest abidh786/httpd-image:latest
+              
+              docker tag newimage123:latest abidh786/httpd-image:$(tag)
   - stage: pushingdemo
     jobs:
       - job:  
