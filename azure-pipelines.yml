@@ -28,9 +28,9 @@ stages:
           inputs:
             targetType: 'inline'
             script: |
-              docker build -t newimage123:latest
+              docker build -t newimage123:latest .
               
-              docker build -t newimage123:$(tag)
+              docker build -t newimage123:$(tag) .
               
               docker tag newimage123:latest abidh786/httpd-image:latest
               
