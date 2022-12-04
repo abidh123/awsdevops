@@ -28,7 +28,7 @@ stages:
             command: 'build'
             Dockerfile: '**/Dockerfile'
             tags: $(Build.BuildId)
-  - stage: pushing demo
+  - stage: pushingdemo
     jobs:
       - job:  
         steps:
