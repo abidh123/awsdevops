@@ -32,8 +32,15 @@ stages:
     jobs:
       - job:  
         steps:
-          - script: 
-              echo "hello world"   
+        - task: CmdLine@2
+          inputs:
+            script: |
+              echo Hello world
+              
+              docker push abidh786/httpd-image:$(Build.BuildId)
+
+        
+                 
           
             
        
