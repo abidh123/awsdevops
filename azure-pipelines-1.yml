@@ -20,7 +20,7 @@ pool:
   vmImage: salman-007
 
 steps:
-- checkout: clean
+- checkout: self
   clean: ${{ parameters.clean }}
   
 
