@@ -13,11 +13,19 @@ parameters:
     values:
       - true
       - false
+strategy:
+ matrix:
+  selfhosted:
+    poolname: new-agent
+    vmImage : salman-007
+  
+
+
 
 
 pool:
-  name: new-agent
-  vmImage: salman-007
+  name: $(poolname)
+  vmImage: $(vmImage)
 
 steps:
 - checkout: self
