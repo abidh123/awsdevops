@@ -30,9 +30,14 @@ pool:
 steps:
 - checkout: self
   clean: ${{ parameters.clean }}
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: 'kuberenetes/*.yml'
+    TargetFolder: '$(Pipeline.Workspace)'
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)/kuberenetes'
+    targetPath: '$(Pipeline.Workspace)'
     artifact: 'drop'
     publishLocation: 'pipeline'
 - script: |
