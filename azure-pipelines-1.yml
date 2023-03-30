@@ -30,7 +30,6 @@ pool:
 steps:
 - checkout: self
   clean: ${{ parameters.clean }}
--
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
