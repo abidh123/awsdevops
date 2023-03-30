@@ -32,7 +32,7 @@ steps:
   clean: ${{ parameters.clean }}
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
+    targetPath: '$(Pipeline.Workspace)/*.yml'
     artifact: 'drop'
     publishLocation: 'pipeline'
 - script: |
