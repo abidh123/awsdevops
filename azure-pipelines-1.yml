@@ -5,14 +5,24 @@
 
 trigger:
 - feature
+parameters:
+  - name: clean
+    displayName: cleaning the code
+    type: boolean
+    default: true
+    values:
+      - true
+      - false
+
 
 pool:
   name: new-agent
   vmImage: salman-007
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- checkout: clean
+  clean: ${{ parameters.clean }}
+  
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
