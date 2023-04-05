@@ -5,13 +5,19 @@
 
 trigger:
 - none
+parameters:
+  - name: vmimagename
+    type: string
+    default: salman-007
+
+    
 variables:
 - name: salman
   value: azuredevops
 
 pool:
  name: new-agent
- vmimage: salman-007
+ vmimage: ${{parameters.vmimagename}}
     
 
 steps:
