@@ -5,41 +5,15 @@
 
 trigger:
 - feature
-parameters:
-  - name: clean
-    displayName: cleaning the code
-    type: boolean
-    default: true
-    values:
-      - true
-      - false
-strategy:
- matrix:
-  selfhosted:
-    poolname: new-agent
-    vmImage : salman-007
-  
-
-
-
-
-pool:
-  name: $(poolname)
-  vmImage: $(vmImage)
+variables:
+- name: salman
+  value: azuredevops
 
 steps:
-- checkout: self
-  clean: ${{ parameters.clean }}
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: 'kuberenetes/*.yml'
-    TargetFolder: '$(Pipeline.Workspace)'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'drop'
-    publishLocation: 'pipeline'
+- script: 
+    echo this value is$(salman)
+  displayName: presenting variable values 
+
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
