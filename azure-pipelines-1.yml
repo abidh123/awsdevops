@@ -8,15 +8,10 @@ trigger:
 variables:
 - name: salman
   value: azuredevops
-parameters:
-  - name: image
-    displayName: poolimage
-    default: salman-007
-    type: string
 
 pool:
  name: new-agent
- vmimage: "${{ parameters.image }}"
+ vmimage: salman-007
     
 
 steps:
