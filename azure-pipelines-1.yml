@@ -11,9 +11,7 @@ parameters:
     default: salman-007
 
     
-variables:
-- name: salman
-  value: azuredevops
+
 
 pool:
  name: new-agent
@@ -21,9 +19,9 @@ pool:
     
 
 steps:
-- script: 
-    echo this value is$(salman)
-  displayName: presenting variable values 
+# - script: 
+#     echo this value is$(salman)
+#   displayName: presenting variable values 
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
