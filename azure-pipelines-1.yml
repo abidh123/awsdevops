@@ -9,14 +9,14 @@ parameters:
 - name: image
   displayName: Pool Image
   type: string
-  default: ubuntu-latest
+  default: salman-007
 
     
 
 
 pool:
  name: new-agent
- vmimage: ${{ parameters.imagename }}
+ vmimage: ${{ parameters.image }}
     
 
 steps:
