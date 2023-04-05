@@ -6,8 +6,8 @@
 trigger:
 - none
 variables:
-- name: salman
-  value: azuredevops
+  - group: myvariablesgroup
+  
 
 pool:
  name: new-agent
@@ -15,6 +15,11 @@ pool:
     
 
 steps:
+- script: 
+    echo myvariables-$(myvariablesgroup.name)
+    echo myvariables-$(myvariablesgroup.location)
+    echo myvariables-$(myvariablesgroup.designation)
+
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
