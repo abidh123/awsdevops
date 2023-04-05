@@ -10,6 +10,8 @@ variables:
   value: azuredevops
 
 pool:
+ name: new-agent
+ vmimage: salman-007
     
 
 steps:
