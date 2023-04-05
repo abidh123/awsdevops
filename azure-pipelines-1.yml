@@ -16,7 +16,7 @@ parameters:
 
 pool:
  name: new-agent
- vmimage: ${{ parameters.image }}
+ vmimage: "${{ parameters.image }}"
     
 
 steps:
