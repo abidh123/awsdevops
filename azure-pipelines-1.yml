@@ -9,6 +9,9 @@ variables:
 - name: salman
   value: azuredevops
 
+pool:
+    
+
 steps:
 - script: 
     echo this value is$(salman)
