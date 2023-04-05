@@ -6,9 +6,10 @@
 trigger:
 - none
 parameters:
-  - name: imagename
-    type: string
-    default: salman-007
+- name: image
+  displayName: Pool Image
+  type: string
+  default: ubuntu-latest
 
     
 
