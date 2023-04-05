@@ -5,23 +5,21 @@
 
 trigger:
 - none
+variables:
+- name: salman
+  value: azuredevops
 parameters:
-- name: image
-  displayName: Pool Image
-  type: string
-  default: salman-007
-
-    
-
+  - name: image
+    displayName: poolimage
+    default: salman-007
+    type: string
 
 pool:
- vmimage: ${{ parameters.image }}
+ name: new-agent
+ vmimage: ${{parameters.image}}
     
 
 steps:
-# - script: 
-#     echo this value is$(salman)
-#   displayName: presenting variable values 
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
