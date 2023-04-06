@@ -24,5 +24,16 @@ stages:
                 inputs:
                   script: 'echo $(Dockerpassword) | docker login --username $(DockerUsername) --password-stdin'
 
+    - stage: build_docker_image
+      jobs:
+        - job: 
+          steps:
+            - task: CmdLine@2
+              displayName: buildingdockerimage
+              inputs:
+                script: 'docker build -t newjenkinsimage:786 .'
+                failOnStderr: true
+                                        
+
 
   
