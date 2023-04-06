@@ -15,12 +15,12 @@ pool:
  vmimage: salman-007
 
 stages:
-    - stage: login into docker
+    - stage: login_into_docker
       jobs:
           - job: 
             steps:
                 - script: 
                     sh 'echo $Dockerpassword | docker login --username $(DockerUsername) --password-stdin'
-                    
+
 
   
