@@ -6,8 +6,10 @@
 trigger:
 - none
 variables:
-  - name: salman-devops
-    value: azuredevops
+   name: salman-devops
+   password: salman
+   location: hyderabad
+    
   
 
 pool:
@@ -17,7 +19,9 @@ pool:
 
 steps:
 - script: 
-    echo myvariables-$(salman-devops)
+    echo myvariables-$(name)
+    echo myvariables-$(password)
+    echo myvariables-$(location)
     
 
 
