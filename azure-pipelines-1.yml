@@ -13,18 +13,14 @@ variables:
 pool:
  name: new-agent
  vmimage: salman-007
-    
 
-steps:
-- script: |
-    echo the designation is $(designation)
-    echo the location is $(location)
-    echo the name is $(name)
-    
+stages:
+    - stage: login into docker
+      jobs:
+          - job: 
+            steps:
+                - script: 
+                    sh 'echo $Dockerpassword | docker login --username $(DockerUsername) --password-stdin'
+                    
 
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
   
