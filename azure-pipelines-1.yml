@@ -17,9 +17,9 @@ pool:
 
 steps:
 - script: |
-    echo the designation is $designation
-    echo the location is $location
-    echo the name is $name
+    echo the designation is $(designation)
+    echo the location is $(location)
+    echo the name is $(name)
     
 
 
