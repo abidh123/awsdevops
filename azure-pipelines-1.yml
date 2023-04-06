@@ -6,9 +6,7 @@
 trigger:
 - none
 variables:
-   name: salman-devops
-   password: salman
-   location: hyderabad
+    - group: myvariablesgroup
     
   
 
@@ -19,9 +17,9 @@ pool:
 
 steps:
 - script: |
-    echo myvariables-$(name)
-    echo myvariables-$(password)
-    echo myvariables-$(location)
+    echo the designation is $designation
+    echo the location is $location
+    echo the name is $name
     
 
 
