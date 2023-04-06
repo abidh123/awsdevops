@@ -19,11 +19,10 @@ stages:
       jobs:
           - job: 
             steps:
-                - task: Bash@3
-                  displayName: docker_login
-                  inputs:
-                    targetType: 'inline'
-                    script: 'echo $Dockerpassword | docker login --username $DockerUsername --password-stdin'
+              - task: CmdLine@2
+                displayName: docker_login
+                inputs:
+                  script: 'echo $(Dockerpassword) | docker login --username $(DockerUsername) --password-stdin'
 
 
   
