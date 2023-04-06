@@ -6,7 +6,8 @@
 trigger:
 - none
 variables:
-  - group: myvariablesgroup
+  - name: salman-devops
+    value: azuredevops
   
 
 pool:
@@ -16,9 +17,8 @@ pool:
 
 steps:
 - script: 
-    echo myvariables-$(myvariablesgroup.name)
-    echo myvariables-$(myvariablesgroup.location)
-    echo myvariables-$(myvariablesgroup.designation)
+    echo myvariables-$(salman-devops)
+    
 
 
 - script: |
