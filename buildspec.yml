@@ -13,4 +13,4 @@ phases:
 
 artificats:
   files:
-    - 'kuberenetes/*.yml'
+    - '**/*'
