@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       nodejs: latest
     commands:
-      - apt-get update -y
+      - yum update -y
 
   build:
     commands:
