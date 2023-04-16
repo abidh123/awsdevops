@@ -28,11 +28,13 @@ stages:
       jobs:
         - job: 
           steps:
-            - task: CmdLine@2
-              displayName: buildingdockerimage
-              inputs:
-                script: 'docker build -t newjenkinsimage:786 .'
-                failOnStderr: true
+          - task: Bash@3
+            displayName: docker-image-build
+            inputs:
+              targetType: 'inline'
+              script: |
+                cd aks-purpose-project/
+                docker build -t akspurpose-repo:latest .
                                         
 
 
