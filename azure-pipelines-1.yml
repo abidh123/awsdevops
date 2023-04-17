@@ -35,6 +35,7 @@ stages:
               script: |
                 cd aks-purpose-project/
                 docker build -t akspurpose-repo:latest .
+                docker tag abidh786/akspurpose-repo:latest
                                         
 
 
