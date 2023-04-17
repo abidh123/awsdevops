@@ -46,7 +46,7 @@ stages:
               targetType: 'inline'
               script: 'docker push abidh786/akspurpose-repo:latest'
 
-    - stage: copy&publishartifcats
+    - stage: copy_publish_artifcats
       jobs:
         - job:
           steps:
