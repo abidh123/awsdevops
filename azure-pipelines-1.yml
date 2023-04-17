@@ -36,6 +36,15 @@ stages:
                 cd aks-purpose-project/
                 docker build -t akspurpose-repo:latest .
                 docker tag akspurpose-repo:latest abidh786/akspurpose-repo:latest
+    - stage: push_docker_image
+      jobs:
+        - job:
+          steps:
+          - task: Bash@3
+            displayName: push_docker_image
+            inputs:
+              targetType: 'inline'
+              script: 'docker push abidh786/akspurpose-repo:latest'
                                         
 
 
