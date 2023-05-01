@@ -1,0 +1,12 @@
+version: "3.0"
+services:
+  aks-image:
+    build: .
+    ports:
+      - "5000:8080"
+  eks-image:
+    build: ../../root/eks-purpose-project
+    ports:
+      - "3000:3000"
+
+

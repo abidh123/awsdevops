@@ -3,13 +3,13 @@
 const express = require('express');
 
 // Constants
-const PORT = 5000;
+const PORT = 3000;
 const HOST = '0.0.0.0';
 
 // App
 const app = express();
-app.get('/', (req, res) => {
-  res.send('Hello World');
+app.get('/eks-k8s', (req, res) => {
+  res.send('welcome to eks-purpose-project');
 });
 
 app.listen(PORT, HOST, () => {
