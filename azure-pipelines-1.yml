@@ -56,7 +56,11 @@ stages:
             displayName: push_docker_image
             inputs:
               targetType: 'inline'
-              script: 'docker push abidh786/akspurpose-repo:latest'
+              script: |
+                docker push abidh786/akspurpose-repo:latest
+                docker push abidh786/akspurpose-repo:$(Build.BuildId)
+                docker push abidh786/awsekspurposerepo:latest
+                docker push abidh786/awsekspurposerepo:$(Build.BuildId)
 
     - stage: copy_publish_artifcats
       jobs:
