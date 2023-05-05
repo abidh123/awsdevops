@@ -6,6 +6,8 @@ phases:
     commands:
       - yum update -y
       - docker --version
+      - systemctl status docker
+      - systemctl start docker
       
     finally:
       - echo succesfully docker version is $(docker --version)
