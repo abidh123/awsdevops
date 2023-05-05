@@ -5,11 +5,17 @@ phases:
       nodejs: latest
     commands:
       - yum update -y
+      - docker --version
     finally:
-      - echo succesfully system is updated
+      - echo succesfully docker version is $(docker --version)
 
-  pre_build:
+  build:
     commands:
-      - sh azurecli.sh
+      - cd aks-purpose-project/
+      - docker build -t akspurpose-repo:latest .
     finally:
-      - az version          
+      - echo succesfully build docker image
+  post_build:
+    commands:
+      - docker tag awsekspurposerepo:latest abidh786/awsekspurposerepo:latest
+      - docker push abidh786/akspurpose-repo:latest  
