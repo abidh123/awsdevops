@@ -20,5 +20,5 @@ phases:
       - echo succesfully build docker image
   post_build:
     commands:
-      - docker tag awsekspurposerepo:latest abidh786/awsekspurposerepo:latest
+      - docker tag akspurpose-repo:latest abidh786/akspurpose-repo:latest
       - docker push abidh786/akspurpose-repo:latest  
