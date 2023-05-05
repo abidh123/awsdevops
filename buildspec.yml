@@ -6,8 +6,12 @@ phases:
     commands:
       - yum update -y
       - docker --version
+      
     finally:
       - echo succesfully docker version is $(docker --version)
+  pre_build:
+    commands:
+      - echo $Dockerpassword | docker login --username $DockerUsername --password-stdin    
 
   build:
     commands:
