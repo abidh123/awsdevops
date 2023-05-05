@@ -7,12 +7,11 @@ phases:
       - docker --version
       - curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.25.7/2023-03-17/bin/darwin/amd64/kubectl
       - chmod +x ./kubectl
-      - mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
-      - echo 'export PATH=$PATH:$HOME/bin' >> ~/.bash_profile
-      - kubectl version --short --client     
+      - cp ./kubectl /usr/bin
+      - kubectl version      
     finally:
       - echo succesfully docker version is $docker --version
-      - echo kubectl version $kubectl version --short --client
+      - echo kubernets version is $kubectl version
   pre_build:
     commands:
       - echo $Dockerpassword | docker login --username $DockerUsername --password-stdin    
