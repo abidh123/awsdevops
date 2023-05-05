@@ -7,7 +7,7 @@ phases:
       - docker --version
       
     finally:
-      - echo succesfully docker version is $(docker --version)
+      - echo succesfully docker version is $docker --version
   pre_build:
     commands:
       - echo $Dockerpassword | docker login --username $DockerUsername --password-stdin    
@@ -16,9 +16,12 @@ phases:
     commands:
       - cd aks-purpose-project/
       - docker build -t akspurpose-repo:latest .
+      - docker build -t akspurpose-repo:$CODEBUILD_BUILD_NUMBER .
     finally:
       - echo succesfully build docker image
   post_build:
     commands:
       - docker tag akspurpose-repo:latest abidh786/akspurpose-repo:latest
-      - docker push abidh786/akspurpose-repo:latest  
+      - docker tag akspurpose-repo:$CODEBUILD_BUILD_NUMBER abidh786/akspurpose-repo:$CODEBUILD_BUILD_NUMBER
+      - docker push abidh786/akspurpose-repo:latest
+      - docker push abidh786/akspurpose-repo:$CODEBUILD_BUILD_NUMBER  
