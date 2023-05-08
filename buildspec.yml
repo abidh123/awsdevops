@@ -25,4 +25,4 @@ phases:
       - docker tag akspurpose-repo:latest abidh786/akspurpose-repo:latest
       - docker tag akspurpose-repo:$CODEBUILD_BUILD_NUMBER abidh786/akspurpose-repo:$CODEBUILD_BUILD_ID
       - docker push abidh786/akspurpose-repo:latest
-      - docker push abidh786/akspurpose-repo:$CODEBUILD_BUILD_NUMBER  
+      - docker push abidh786/akspurpose-repo:$CODEBUILD_BUILD_ID  
