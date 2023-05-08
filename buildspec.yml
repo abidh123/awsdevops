@@ -5,11 +5,7 @@ phases:
       nodejs: latest
     commands:
       - docker --version
-      - curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.25.7/2023-03-17/bin/darwin/amd64/kubectl
-      - chmod +x ./kubectl
-      - cp ./kubectl /usr/bin
-      - export KUBECONFIG=$HOME/.kube/config
-      - kubectl version      
+      - export KUBECONFIG=$HOME/.kube/config     
     finally:
       - echo succesfully docker version is $(docker --version)
       - echo kubernets version is $(kubectl version)
