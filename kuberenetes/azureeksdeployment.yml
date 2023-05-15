@@ -18,7 +18,7 @@ spec:
       - name: aks-new-app
         image: abidh786/akspurpose-repo:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
         resources:
           requests:
             memory: "64Mi"
@@ -37,12 +37,12 @@ metadata:
     app: aks-new-app
     namespace: dev
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: aks-new-app
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 5000
+    targetPort: 5000
 
 
 
