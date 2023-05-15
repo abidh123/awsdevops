@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-new-app-2
+  labels:
+    app: aks-new-app-2
+    namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: aks-new-app-2
+  template:
+    metadata:
+      labels:
+        app: aks-new-app-2
+    spec:
+      containers:
+      - name: aks-new-app
+        image: abidh786/awsekspurposerepo:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        readinessProbe:
+          httpGet:
+            path: /eks-k8s
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-new-service-2
+  labels:
+    app: aks-new-app-2
+    namespace: dev
+ 
+spec:
+  type: NodePort
+  selector:
+    app: aks-new-app-2
+  ports:
+  - port: 3000
+    targetPort: 3000
+
+
+       

@@ -1,0 +1,47 @@
+# This file contains the essential configs for the ingress controller helm chart
+
+# Verbosity level of the App Gateway Ingress Controller
+verbosityLevel: 3
+
+################################################################################
+# Specify which application gateway the ingress controller will manage
+#
+appgw:
+    subscriptionId: 9a1d93aa-b86a-4e3a-97b6-a483ca018a82
+    resourceGroup: salman-dev
+    name: argocdappgw
+    usePrivateIP: false
+
+    # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
+    # This prohibits AGIC from applying config for any host/path.
+    # Use "kubectl get AzureIngressProhibitedTargets" to view and change this.
+    shared: false
+
+################################################################################
+# Specify which kubernetes namespace the ingress controller will watch
+# Default value is "default"
+# Leaving this variable out or setting it to blank or empty string would
+# result in Ingress Controller observing all acessible namespaces.
+#
+# kubernetes:
+#   watchNamespace: <namespace>
+
+################################################################################
+# Specify the authentication with Azure Resource Manager
+#
+# Two authentication methods are available:
+# - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
+armAuth:
+    type: aadPodIdentity
+    identityResourceID: /subscriptions/9a1d93aa-b86a-4e3a-97b6-a483ca018a82/resourcegroups/MC_salman-dev_argocdaks_centralindia/providers/Microsoft.ManagedIdentity/userAssignedIdentities/newargocd
+    identityClientID:  dae7e300-9311-4ab9-bc69-6dba4f11e6e9
+
+## Alternatively you can use Service Principal credentials
+# armAuth:
+#    type: servicePrincipal
+#    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
+
+################################################################################
+# Specify if the cluster is RBAC enabled or not
+rbac:
+    enabled: true # true/false

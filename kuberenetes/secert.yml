@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  azurestorageaccountname: YWtzc3RvcmFnZTIwMjM=
+  azurestorageaccountkey:  LzNzUW4rM29ldzQ4YmZtaC9idTBmRVNPaTBaZzYxeCtiYVBoVHU1anBHMGJyWC85MU1VVWdGVkdoQ2hPM3JBSFhtWE1CV01tN01vOCtBU3RaYWtXOEE9PQ==
+  imagename: YWJpZGg3ODYvYWtzcHVycG9zZS1yZXBvOmxhdGVzdA==
+  ports: ODA4MA==

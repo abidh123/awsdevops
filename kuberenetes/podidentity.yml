@@ -1,0 +1,18 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: aks-vault-alp
+spec:
+  type: 0
+  resourceID: /subscriptions/9a1d93aa-b86a-4e3a-97b6-a483ca018a82/resourcegroups/MC_salman-dev_argocdaks_centralindia/providers/Microsoft.ManagedIdentity/userAssignedIdentities/newargocd
+  clientID: dae7e300-9311-4ab9-bc69-6dba4f11e6e9
+  #Assign ID with lower case
+---
+
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: aks-vault-alp
+spec:
+  azureIdentity: aks-vault-alp
+  selector: aks-vault-alp
