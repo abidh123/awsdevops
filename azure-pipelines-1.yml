@@ -34,10 +34,10 @@ stages:
               targetType: 'inline'
               script: |
                 cd aks-purpose-project/
-                docker build -t $(Docker-repo):latest .
-                docker build -t $(Docker-repo):$(Build.BuildId) .
-                docker tag $(Docker-repo):latest abidh786/$(Docker-repo):latest
-                docker tag $(Docker-repo):$(Build.BuildId) abidh786/$(Docker-repo):$(Build.BuildId)
+                docker build -t $(Docker-repo-master):latest .
+                docker build -t $(Docker-repo-master):$(Build.BuildId) .
+                docker tag $(Docker-repo-master):latest abidh786/$(Docker-repo):latest
+                docker tag $(Docker-repo-master):$(Build.BuildId) abidh786/$(Docker-repo):$(Build.BuildId)
           - task: Bash@3
             inputs:
               targetType: 'inline'
@@ -57,8 +57,8 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                docker push abidh786/$(Docker-repo):latest
-                docker push abidh786/$(Docker-repo):$(Build.BuildId)
+                docker push abidh786/$(Docker-repo-master):latest
+                docker push abidh786/$(Docker-repo-master):$(Build.BuildId)
                 docker push abidh786/$(Dockereks-repo):latest
                 docker push abidh786/$(Dockereks-repo):$(Build.BuildId)
 
