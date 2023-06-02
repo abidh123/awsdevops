@@ -34,19 +34,19 @@ stages:
               targetType: 'inline'
               script: |
                 cd aks-purpose-project/
-                docker build -t akspurpose-repo:latest .
-                docker build -t akspurpose-repo:$(Build.BuildId) .
-                docker tag akspurpose-repo:latest abidh786/akspurpose-repo:latest
-                docker tag akspurpose-repo:$(Build.BuildId) abidh786/akspurpose-repo:$(Build.BuildId)
+                docker build -t $(Docker-repo):latest .
+                docker build -t $(Docker-repo):$(Build.BuildId) .
+                docker tag $(Docker-repo):latest abidh786/$(Docker-repo):latest
+                docker tag $(Docker-repo):$(Build.BuildId) abidh786/$(Docker-repo):$(Build.BuildId)
           - task: Bash@3
             inputs:
               targetType: 'inline'
               script: |
                 cd eks-purpose-project
-                docker build -t awsekspurposerepo:latest .
-                docker build -t awsekspurposerepo:$(Build.BuildId) .
-                docker tag awsekspurposerepo:latest abidh786/awsekspurposerepo:latest
-                docker tag awsekspurposerepo:$(Build.BuildId) abidh786/awsekspurposerepo:$(Build.BuildId)
+                docker build -t $(Dockereks-repo):latest .
+                docker build -t $(Dockereks-repo):$(Build.BuildId) .
+                docker tag $(Dockereks-repo):latest abidh786/$(Dockereks-repo):latest
+                docker tag $(Dockereks-repo):$(Build.BuildId) abidh786/$(Dockereks-repo):$(Build.BuildId)
 
     - stage: push_docker_image
       jobs:
@@ -57,10 +57,10 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                docker push abidh786/akspurpose-repo:latest
-                docker push abidh786/akspurpose-repo:$(Build.BuildId)
-                docker push abidh786/awsekspurposerepo:latest
-                docker push abidh786/awsekspurposerepo:$(Build.BuildId)
+                docker push abidh786/$(Docker-repo):latest
+                docker push abidh786/$(Docker-repo):$(Build.BuildId)
+                docker push abidh786/$(Dockereks-repo):latest
+                docker push abidh786/$(Dockereks-repo):$(Build.BuildId)
 
     - stage: copy_publish_artifcats
       jobs:
