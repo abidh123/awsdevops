@@ -36,8 +36,8 @@ stages:
                 cd aks-purpose-project/
                 docker build -t $(Docker-repo-master):latest .
                 docker build -t $(Docker-repo-master):$(Build.BuildId) .
-                docker tag $(Docker-repo-master):latest abidh786/$(Docker-repo):latest
-                docker tag $(Docker-repo-master):$(Build.BuildId) abidh786/$(Docker-repo):$(Build.BuildId)
+                docker tag $(Docker-repo-master):latest abidh786/$(Docker-repo-master):latest
+                docker tag $(Docker-repo-master):$(Build.BuildId) abidh786/$(Docker-repo-master):$(Build.BuildId)
           - task: Bash@3
             inputs:
               targetType: 'inline'
