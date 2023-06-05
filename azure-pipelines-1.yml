@@ -102,11 +102,7 @@ stages:
                targetType: 'inline'
                script: 'npm build'
           
-                  
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: 'npm build'
+              
                   
 
 
