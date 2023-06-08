@@ -15,15 +15,6 @@ pool:
  vmimage: npmagent
 
 stages:
-    - stage: login_into_docker
-      jobs:
-          - job: 
-            steps:
-              - task: CmdLine@2
-                displayName: docker_login
-                inputs:
-                  script: 'echo $(Dockerpassword) | docker login --username $(DockerUsername) --password-stdin'
-
     - stage: npm_install_artificats
       jobs:
         - job:
@@ -36,43 +27,7 @@ stages:
               customFeed: 'd1d9277d-a982-4244-8dd6-e31c107caee3'
            
 
-    - stage: build_docker_image
-      jobs:
-        - job: 
-          steps:
-          - task: Bash@3
-            displayName: docker-image-build
-            inputs:
-              targetType: 'inline'
-              script: |
-                cd aks-purpose-project/
-                docker build -t $(Docker-repo):latest .
-                docker build -t $(Docker-repo):$(Build.BuildId) .
-                docker tag $(Docker-repo):latest abidh786/$(Docker-repo):latest
-                docker tag $(Docker-repo):$(Build.BuildId) abidh786/$(Docker-repo):$(Build.BuildId)
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: |
-                cd eks-purpose-project
-                docker build -t $(Dockereks-repo):latest .
-                docker build -t $(Dockereks-repo):$(Build.BuildId) .
-                docker tag $(Dockereks-repo):latest abidh786/$(Dockereks-repo):latest
-                docker tag $(Dockereks-repo):$(Build.BuildId) abidh786/$(Dockereks-repo):$(Build.BuildId)
-
-    - stage: push_docker_image
-      jobs:
-        - job:
-          steps:
-          - task: Bash@3
-            displayName: push_docker_image
-            inputs:
-              targetType: 'inline'
-              script: |
-                docker push abidh786/$(Docker-repo):latest
-                docker push abidh786/$(Docker-repo):$(Build.BuildId)
-                docker push abidh786/$(Dockereks-repo):latest
-                docker push abidh786/$(Dockereks-repo):$(Build.BuildId)
+    
 
     - stage: copy_publish_artifcats
       jobs:
