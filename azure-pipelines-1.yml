@@ -22,7 +22,7 @@ stages:
           - task: Npm@1
             inputs:
               command: 'install'
-              workingDir: 'aks-purpose-project/package.json'
+              workingDir: 'aks-purpose-project'
               customRegistry: 'useFeed'
               customFeed: 'd1d9277d-a982-4244-8dd6-e31c107caee3'
            
