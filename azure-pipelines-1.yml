@@ -77,30 +77,6 @@ stages:
                 PathtoPublish: '$(Build.ArtifactStagingDirectory)'
                 ArtifactName: 'drop'
                 publishLocation: 'Container'
-    - stage: testcoverage
-      jobs:
-        - job: 
-          steps:
-            - task: Npm@1
-              inputs:
-                command: 'custom'
-                workingDir: '/'
-                customCommand: 'npm test'
-
-    - stage: sonarqube
-      jobs:
-        - job:  
-          steps:
-            - task: SonarQubePreBuild@1
-
-    - stage: buildcode
-      jobs:
-        - job: 
-          steps:
-           - task: Bash@3
-             inputs:
-               targetType: 'inline'
-               script: 'npm build'
           
               
                   
