@@ -11,8 +11,8 @@ variables:
   
 
 pool:
- name: new-agent
- vmimage: salman-007
+ name: npm-testing
+ vmimage: npmagent
 
 stages:
     - stage: login_into_docker
