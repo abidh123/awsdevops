@@ -21,12 +21,10 @@ stages:
       jobs:
         - job:
           steps:
-          - task: Npm@1
+          - task: Bash@3
             inputs:
-              command: 'install'
-              workingDir: 'aks-purpose-project/'
-              customRegistry: 'useFeed'
-              customFeed: 'd1d9277d-a982-4244-8dd6-e31c107caee3'
+              targetType: 'inline'
+              script: 'npm install docker_web_app@2.0.0'
            
 
     
