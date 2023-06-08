@@ -24,6 +24,18 @@ stages:
                 inputs:
                   script: 'echo $(Dockerpassword) | docker login --username $(DockerUsername) --password-stdin'
 
+    - stage: npm_install_artificats
+      jobs:
+        - job:
+          steps:
+          - task: Npm@1
+            inputs:
+              command: 'install'
+              workingDir: 'aks-purpose-project/package.json'
+              customRegistry: 'useFeed'
+              customFeed: 'd1d9277d-a982-4244-8dd6-e31c107caee3'
+           
+
     - stage: build_docker_image
       jobs:
         - job: 
