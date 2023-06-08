@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -22,9 +23,6 @@ stages:
           - task: Npm@1
             inputs:
               command: 'install'
-              workingDir: 'aks-purpose-project'
-              customRegistry: 'useFeed'
-              customFeed: 'd1d9277d-a982-4244-8dd6-e31c107caee3'
            
 
     
