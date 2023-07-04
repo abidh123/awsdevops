@@ -4,7 +4,7 @@ metadata:
   name: aks-new-app
   labels:
     app: aks-new-app
-    namespace: dev
+    
 spec:
   selector:
     matchLabels:
@@ -35,7 +35,7 @@ metadata:
   name: aks-new-service
   labels:
     app: aks-new-app
-    namespace: dev
+    
 spec:
   type: NodePort
   selector:
