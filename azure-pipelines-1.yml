@@ -86,7 +86,7 @@ stages:
                inputs:
                  awsCredentials: 'AWS_Service'
                  regionName: 'ap-south-1'
-                 secretIdOrName:  'arn:aws:kms:ap-south-1:810901317241:key/ffea522d-6b13-4478-985b-9b50c28644c3:alias/cosign-key'
+                 secretIdOrName:  'arn:aws:kms:ap-south-1:810901317241:key/ffea522d-6b13-4478-985b-9b50c28644c3'
                  variableName: 'myvar'
 
 
