@@ -11,8 +11,8 @@ variables:
   
 
 pool:
- name: new-agent
- vmimage: salman-007
+ name: eks-agent
+ vmimage: neweks-007
 
 stages:
     - stage: login_into_docker
