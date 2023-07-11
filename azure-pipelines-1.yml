@@ -82,13 +82,13 @@ stages:
       jobs:
         - job:
           steps:
-            -  task: SecretsManagerGetSecret@1
-               displayName: AWSKMSGETSECERT
-               inputs:
-                 awsCredentials: 'AWS_Service'
-                 regionName:     'ap-south-1'
-                 secretIdOrName: 'cosign-key'
-                 variableName:   'myvar'
+            - task: SecretsManagerGetSecret@1
+              displayName: AWSKMSGETSECRET
+              inputs:
+                awsCredentials: 'AWS_Service'
+                regionName: 'ap-south-1'
+                secretIdOrName: 'cosign-key'
+                variableName: ' awskms:///arn:aws:kms:ap-south-1:810901317241:alias/cosign-key'
 
     - stage: cosignverify
       jobs:
