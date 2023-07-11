@@ -83,11 +83,22 @@ stages:
         - job:
           steps:
             -  task: SecretsManagerGetSecret@1
+               displayName: AWSKMSGETSECERT
                inputs:
                  awsCredentials: 'AWS_Service'
                  regionName: 'ap-south-1'
                  secretIdOrName:  'arn:aws:kms:ap-south-1:810901317241:key/ffea522d-6b13-4478-985b-9b50c28644c3'
                  variableName: 'myvar'
+
+    - stage: cosignverify
+      jobs:
+        - job:
+          steps:
+            - task: Bash@3
+              displayName: COSIGNVERIFY
+              inputs:
+                targetType: 'inline'
+                script: ' cosign verify --key cosign.pub abidh786/akspurpose-repo-master:latest'            
 
 
                                         
