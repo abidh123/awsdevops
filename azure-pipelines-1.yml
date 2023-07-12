@@ -96,7 +96,7 @@ stages:
               displayName: COSIGNVERIFY
               inputs:
                 targetType: 'inline'
-                script: ' cosign verify --key $(signaturekey) abidh786/akspurpose-repo-master:latest'            
+                script: 'cosign sign --key awskms:///arn:aws:kms:ap-south-1:810901317241:alias/cosign-key abidh786/akspurpose-repo-master:latest'            
 
 
                                         
