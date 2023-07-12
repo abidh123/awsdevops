@@ -96,7 +96,7 @@ stages:
               displayName: COSIGNVERIFY
               inputs:
                 targetType: 'inline'
-                script: ' cosign verify --key cosign.pub abidh786/akspurpose-repo-master:latest'            
+                script: ' cosign verify --key $(signaturekey) abidh786/akspurpose-repo-master:latest'            
 
 
                                         
