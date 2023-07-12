@@ -82,11 +82,12 @@ stages:
       jobs:
         - job:
           steps:
-            - task: Bash@3
-              displayName: AWSKMSGETSECERT
+            - task: SecretsManagerGetSecret@1
               inputs:
-                targetType: 'inline'
-                script: 'aws kms get-public-key --key-id arn:aws:kms:ap-south-1:810901317241:alias/cosign-key --query ''PublicKey'' --output text | openssl enc -base64 -A -d -in /dev/stdin | openssl rsa -pubin -inform DER -outform PEM -in /dev/stdin -out cosign.pub'
+                awsCredentials: 'AWS_Service'
+                regionName: 'ap-south-1'
+                secretIdOrName: 'arn:aws:kms:ap-south-1:810901317241:alias/cosign-key'
+                variableName: 'myvar'
 
     - stage: cosignverify
       jobs:
