@@ -12,7 +12,7 @@ variables:
 
 pool:
  name: eks-agent
- vmimage: neweks-007
+ vmimage: newtestinghosted
 
 stages:
     - stage: login_into_docker
@@ -78,16 +78,7 @@ stages:
                 ArtifactName: 'drop'
                 publishLocation: 'Container'
 
-    - stage: awskmsgetkey
-      jobs:
-        - job:
-          steps:
-            - task: SecretsManagerGetSecret@1
-              inputs:
-                awsCredentials: 'AWS_Service'
-                regionName: 'ap-south-1'
-                secretIdOrName: 'arn:aws:kms:ap-south-1:810901317241:alias/cosign-key'
-                variableName: 'myvar'
+    
 
     - stage: cosignverify
       jobs:
@@ -97,7 +88,7 @@ stages:
               displayName: COSIGNVERIFY
               inputs:
                 targetType: 'inline'
-                script: 'cosign sign --key awskms:///arn:aws:kms:ap-south-1:810901317241:alias/cosign-key abidh786/akspurpose-repo-master:latest -y'            
+                script: 'cosign sign --key /root/cosign.key abidh786/akspurpose-repo-master:latest -y'            
 
 
                                         
