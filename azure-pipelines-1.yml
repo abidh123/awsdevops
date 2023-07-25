@@ -88,7 +88,9 @@ stages:
               displayName: COSIGNVERIFY
               inputs:
                 targetType: 'inline'
-                script: 'cosign sign --key /root/cosign.key abidh786/akspurpose-repo-master:latest -y'            
+                script: 'yes y | cosign sign --key /root/cosign.key abidh786/akspurpose-repo-master:latest'
+                 
+
 
 
                                         
