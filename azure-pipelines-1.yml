@@ -7,9 +7,6 @@ trigger:
 - none
 variables:
     - group: myvariablesgroup
-    
-  
-
 pool:
  name: eks-agent
  vmimage: newtestinghosted
