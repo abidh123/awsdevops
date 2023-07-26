@@ -74,9 +74,6 @@ stages:
                 PathtoPublish: '$(Build.ArtifactStagingDirectory)'
                 ArtifactName: 'drop'
                 publishLocation: 'Container'
-
-    
-
     - stage: cosignsign
       jobs:
         - job:
