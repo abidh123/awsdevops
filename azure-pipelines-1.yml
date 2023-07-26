@@ -77,15 +77,24 @@ stages:
 
     
 
-    - stage: cosignverify
+    - stage: cosignsign
       jobs:
         - job:
+          steps:
+            - task: Bash@3
+              displayName: COSIGNSIGN
+              inputs:
+                targetType: 'inline'
+                script: 'yes y | cosign sign --key /root/cosign.key abidh786/akspurpose-repo-master:latest'
+    - stage: cosignverify
+      jobs:
+        - job: 
           steps:
             - task: Bash@3
               displayName: COSIGNVERIFY
               inputs:
                 targetType: 'inline'
-                script: 'yes y | cosign sign --key /root/cosign.key abidh786/akspurpose-repo-master:latest'
+                script: 'cosign verify --key /root/cosign.pub abidh786/akspurpose-repo-master:latest'
                  
 
 
