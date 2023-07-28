@@ -6,7 +6,13 @@
 # https://aka.ms/yaml
 
 trigger:
-- none
+ branches:
+   include:
+     - feature
+ paths:
+   include:
+     - aks-purpose-project/*
+     - eks-purpose-project/*  
 variables:
     - name: COSIGN_PASSWORD
       value: 'Salman@789'
