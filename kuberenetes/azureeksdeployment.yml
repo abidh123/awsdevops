@@ -4,7 +4,7 @@ metadata:
   name: aks-new-app
   labels:
     app: aks-new-app
-    
+    namespace: dev
 spec:
   selector:
     matchLabels:
@@ -35,15 +35,36 @@ metadata:
   name: aks-new-service
   labels:
     app: aks-new-app
-    
+    namespace: dev
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: aks-new-app
   ports:
   - port: 5000
     targetPort: 5000
+---
 
-
-
-       
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aksrepoingress
+  labels:
+    name: aksrepoingress
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/backend-path-prefix: "/"
+    appgw.ingress.kubernetes.io/backend-protocol: "http"
+    appgw.ingress.kubernetes.io/use-private-ip: true
+      
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: aks-new-service
+            port: 
+              number: 5000
