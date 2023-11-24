@@ -15,3 +15,16 @@ jobs:
         run: |
           echo $MY_VAR
           echo $MY_NAME  
+
+  my_second_job:
+    name: My second job testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@feature
+      - name: print second job testing values
+        env:
+          MY_USERNAME: SALMAN-GITHUB
+          MY_PASSWORD: SALMAN-PASS
+        run: |
+          echo $MY_USERNAME-$MY_PASSWORD  
+
