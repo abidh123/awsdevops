@@ -20,7 +20,7 @@ jobs:
     name: My second job testing
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@feature
+    
       - name: print second job testing values
         env:
           MY_USERNAME: SALMAN-GITHUB
