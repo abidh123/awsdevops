@@ -1,1 +1,17 @@
-
+name: github actions demo
+on:
+  push:
+    branches:
+      - feature
+jobs:
+  my_first_job:
+    name: my first job testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: print a test
+        env:
+          MY_VAR: Hi there! My name is
+          MY_NAME: SALMAN
+        run: |
+          echo $MY_VAR
+          echo $MY_NAME  
