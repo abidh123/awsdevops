@@ -8,13 +8,15 @@ jobs:
     name: my first job testing
     runs-on: ubuntu-latest
     steps:
-      - name: print a test
+      - id: test1
+        name: print a test
         env:
           MY_VAR: Hi there! My name is
           MY_NAME: SALMAN
         run: |
-          echo $MY_VAR
-          echo $MY_NAME  
+          echo $MY_VAR >> $GITHUB_OUTPUT
+          echo $MY_NAME
+        
 
   my_second_job:
     name: My second job testing
@@ -27,4 +29,5 @@ jobs:
           MY_PASSWORD: SALMAN-PASS
         run: |
           echo $MY_USERNAME-$MY_PASSWORD  
+          echo ${{steps.test1.outputs.MY_VAR}}
 
