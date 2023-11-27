@@ -1,8 +1,14 @@
-name: github actions demo
+name: github actions demo manually trigger
 on:
   push:
     branches:
       - feature
+  workflow_dispatch:
+        
+  
+        
+  
+        
 jobs:
   my_first_job:
     name: my first job testing
