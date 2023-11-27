@@ -1,0 +1,35 @@
+name: github actions demo
+on:
+  push:
+    branches:
+      - feature
+jobs:
+  my_first_job:
+    name: my first job testing
+    runs-on: ubuntu-latest
+    steps:
+      - id: test1
+        name: print a test
+        env:
+          #MY_VAR: Hi there! My name is
+          MY_NAME: SALMAN
+        run: |
+          echo "MY_VAR= Hi there! My name is" >> $GITHUB_OUTPUT
+          echo $MY_NAME
+      - run: |
+          echo ${{steps.test1.outputs.MY_VAR}}
+        
+
+  my_second_job:
+    name: My second job testing
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: print second job testing values
+        env:
+          MY_USERNAME: SALMAN-GITHUB
+          MY_PASSWORD: SALMAN-PASS
+        run: |
+          echo $MY_USERNAME-$MY_PASSWORD  
+          
+
