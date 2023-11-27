@@ -11,10 +11,10 @@ jobs:
       - id: test1
         name: print a test
         env:
-          MY_VAR: Hi there! My name is
+          #MY_VAR: Hi there! My name is
           MY_NAME: SALMAN
         run: |
-          echo $MY_VAR >> $GITHUB_OUTPUT
+          echo "MY_VAR= Hi there! My name is" >> $GITHUB_OUTPUT
           echo $MY_NAME
         
 
