@@ -5,10 +5,7 @@ on:
       - feature
   workflow_dispatch:
         
-  
-        
-  
-        
+          
 jobs:
   my_first_job:
     name: my first job testing
@@ -18,7 +15,7 @@ jobs:
         name: print a test
         env:
           #MY_VAR: Hi there! My name is
-          MY_NAME: SALMAN
+          MY_NAME: SALMANABIDH
         run: |
           echo "MY_VAR= Hi there! My name is" >> $GITHUB_OUTPUT
           echo $MY_NAME
