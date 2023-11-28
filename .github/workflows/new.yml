@@ -23,7 +23,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: my-artifact
-      - run: cat my-artifact/kuberenetes/newtestfile.txt        
+      - run: cat my-artifact/newtestfile.txt        
         
         
    
