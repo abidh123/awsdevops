@@ -3,33 +3,20 @@ on:
   push:
     branches:
       - feature
+  workflow_dispatch: {}
 jobs:
-  my_first_job:
-    name: my first job testing
+  publish_artificats:
+    name: publish artificats
     runs-on: ubuntu-latest
     steps:
-      - id: test1
-        name: print a test
-        env:
-          #MY_VAR: Hi there! My name is
-          MY_NAME: SALMAN
-        run: |
-          echo "MY_VAR= Hi there! My name is" >> $GITHUB_OUTPUT
-          echo $MY_NAME
-      - run: |
-          echo ${{steps.test1.outputs.MY_VAR}}
+      - uses: actions/checkout@v4
+      - run: mkdir artificats
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: artificats
         
-
-  my_second_job:
-    name: My second job testing
-    runs-on: ubuntu-latest
-    steps:
-    
-      - name: print second job testing values
-        env:
-          MY_USERNAME: SALMAN-GITHUB
-          MY_PASSWORD: SALMAN-PASS
-        run: |
-          echo $MY_USERNAME-$MY_PASSWORD  
+        
+   
           
 
