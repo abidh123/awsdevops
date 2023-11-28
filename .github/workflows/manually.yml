@@ -5,8 +5,15 @@ on:
       - feature
   workflow_dispatch: {}
         
-          
 jobs:
+  download_artificats:
+    name: download artificats
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      - run: cat my-artifact/kuberenetes/newtestfile.txt
   
           
 

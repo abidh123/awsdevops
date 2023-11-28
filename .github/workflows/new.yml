@@ -2,7 +2,7 @@ name: github actions demo
 on:
   push:
     branches:
-      - feature
+      - main
   workflow_dispatch: {}
 jobs:
   publish_artificats:
