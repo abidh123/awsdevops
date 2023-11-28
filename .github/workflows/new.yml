@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: mkdir artificats
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
           path: |
-            artificats/kuberenets/*
+            kuberenetes
         
         
    
