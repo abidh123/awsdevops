@@ -24,7 +24,7 @@ jobs:
         with:
           name: my-artifact
       - name: checking     
-        run: ls
+        run: cat newtestfile.txt
                 
         
         
