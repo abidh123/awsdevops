@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      
   workflow_dispatch: {}
 jobs:
   publish_artificats:
@@ -15,6 +16,14 @@ jobs:
           name: my-artifact
           path: |
             kuberenetes
+  download_artificats:
+    needs: publish_artificats
+    runs-on:  ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      - run: cat my-artifact/kuberenetes/newtestfile.txt        
         
         
    

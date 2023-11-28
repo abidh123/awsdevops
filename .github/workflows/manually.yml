@@ -2,7 +2,7 @@ name: github actions demo manually trigger
 on:
   push:
     branches:
-      - feature
+      - main
   workflow_dispatch: {}
         
 jobs:
