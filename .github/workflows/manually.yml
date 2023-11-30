@@ -4,16 +4,19 @@ on:
     branches:
       - main
   workflow_dispatch: {}
-        
+
 jobs:
-  download_artificats:
-    name: download artificats
+  aws_connect:
+    name: checking iam users list
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: my-artifact
-      - run: cat my-artifact/kuberenetes/newtestfile.txt
+      - run: aws iam list-users
+        env:
+          AWS_ACCESS_KEY_ID: AKIAXUJFQFK7S7YS7XHU
+          AWS_SECRET_ACCESS_KEY: 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
+          AWS_DEFAULT_REGION: ap-south-1
+        
+
   
           
 
