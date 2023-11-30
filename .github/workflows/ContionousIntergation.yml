@@ -1,4 +1,4 @@
-name: github actions demo manually trigger
+name: github actions run contionous integrated
 on:
   push:
     branches:

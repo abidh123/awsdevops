@@ -1,4 +1,4 @@
-name: github actions demo
+name: Release CI process to deployment
 on:
   push:
     branches:
