@@ -1,0 +1,22 @@
+[
+    {
+        "ParameterKey": "cidrblockvalue",
+        "ParameterValue": "172.29.0.0/16"
+    },
+    {
+        "ParameterKey": "AvailabilityZone1",
+        "ParameterValue": "ap-south-1a"
+    },
+    {
+        "ParameterKey": "AvailabilityZone2",
+        "ParameterValue": "ap-south-1b"
+    },
+    {
+        "ParameterKey": "subnetcidrblock1",
+        "ParameterValue" : "172.29.24.0/24"
+    },
+    {
+        "ParameterKey": "subnetcidrblock2",
+        "ParameterValue": "172.29.26.0/24"
+    }
+]
