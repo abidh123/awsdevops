@@ -1,0 +1,41 @@
+name: Delete resources from deployment
+on:
+  push:
+    branches:
+      - main
+      
+  workflow_dispatch: {}
+jobs:
+  publish_artificats:
+    name: publish artificats
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir stagging-artificat
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: |
+            cfn-templates
+            
+            
+  download_artificats:
+    needs: publish_artificats
+    runs-on:  ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      - name: checking aws config creds  
+        env:
+          AWS_ACCESS_KEY_ID: AKIAXUJFQFK7S7YS7XHU
+          AWS_SECRET_ACCESS_KEY: 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
+          AWS_DEFAULT_REGION: ap-south-1 
+
+        run: aws cloudformation delete-stack --stack-name newvpc
+                
+        
+        
+   
+          
+

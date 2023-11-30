@@ -1,0 +1,99 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Creating new vpc for my project 
+
+Parameters:
+  cidrblockvalue:
+    Type: String
+    
+  AvailabilityZone1:
+    Type: String
+    
+  AvailabilityZone2:
+    Type: String
+    
+  subnetcidrblock1:
+    Type: String
+    
+  subnetcidrblock2:
+    Type: String
+          
+
+Resources:
+  myvpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock:
+        Ref: cidrblockvalue
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+  myigw: 
+    Type: AWS::EC2::InternetGateway
+
+  AttachIGW:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: myvpc
+      InternetGatewayId:
+        Ref: myigw
+  Publicsubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+        Ref: AvailabilityZone1
+      CidrBlock: 
+        Ref: subnetcidrblock1
+      MapPublicIpOnLaunch: true
+      VpcId:
+        Ref: myvpc 
+  Publicsubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone:
+        Ref: AvailabilityZone2
+      CidrBlock: 
+        Ref: subnetcidrblock2
+      MapPublicIpOnLaunch: true
+      VpcId:
+        Ref: myvpc  
+
+  publicroutetable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: myvpc       
+
+  myroutes:
+    Type: AWS::EC2::Route
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      RouteTableId:
+        Ref: publicroutetable
+      GatewayId:
+        Ref: myigw
+  PublicSubnet01RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: publicroutetable
+      SubnetId:
+        Ref: Publicsubnet1
+  PublicSubnet02RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: publicroutetable
+      SubnetId:
+        Ref: Publicsubnet2 
+
+Outputs:
+  myvpcid:
+    Value:
+      Ref: myvpc
+    Export:  
+      Name: myvpcid
+
+
+
+
+
